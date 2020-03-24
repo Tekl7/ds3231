@@ -1,13 +1,7 @@
 #ifndef __ds3231_h_
 #define __ds3231_h_
 
-//#if ARDUINO >= 100
-#include <Arduino.h>
-//#else
-//#include <WProgram.h>
-//#endif
-
-#include "config.h"
+#include "ds3231_config.h"
 
 #define	DS3231_TRANSACTION_TIMEOUT	100 // Wire NAK/Busy timeout in ms
 

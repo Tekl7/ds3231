@@ -1,6 +1,6 @@
 
 /*
-  DS3231 library for the Arduino.
+  DS3231 library
 
   This library implements the following features:
 
@@ -32,8 +32,14 @@
    
 */
 
-#include <Wire.h>
+#define F_CPU 8000000UL
+
 #include <stdio.h>
+#include <util/delay.h>
+
+#include "millis.h"
+#include "USIWire.h"
+
 #include "ds3231.h"
 
 #ifdef __AVR__
@@ -108,7 +114,7 @@ void DS3231_get(struct ts *t)
       	gotData = true;
       	break;
       }
-      delay(2);
+      _delay_ms(2);
     }
 	if (!gotData)
     	return; // error timeout
@@ -164,7 +170,7 @@ uint8_t DS3231_get_addr(const uint8_t addr)
       	gotData = true;
       	break;
       }
-      delay(2);
+      _delay_ms(2);
     }
 	if (!gotData)
     	return 0; // error timeout
@@ -269,7 +275,7 @@ float DS3231_get_treg()
       	gotData = true;
       	break;
       }
-      delay(2);
+      _delay_ms(2);
     }
 	if (!gotData)
     	return 0; // error timeout
@@ -345,7 +351,7 @@ void DS3231_get_a1(char *buf, const uint8_t len)
       	gotData = true;
       	break;
       }
-      delay(2);
+      _delay_ms(2);
     }
 	if (!gotData)
     	return; // error timeout
@@ -418,7 +424,7 @@ void DS3231_get_a2(char *buf, const uint8_t len)
       	gotData = true;
       	break;
       }
-      delay(2);
+      _delay_ms(2);
     }
 	if (!gotData)
     	return; // error timeout
@@ -502,4 +508,3 @@ uint8_t inp2toi(char *cmd, const uint16_t seek)
     rv = (cmd[seek] - 48) * 10 + cmd[seek + 1] - 48;
     return rv;
 }
-
