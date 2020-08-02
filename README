@@ -1,5 +1,7 @@
 
   DS3231 library for AVR.
+  
+  This fork has been created to support AVR devices with USI interface.
 
   This library implements the following features:
 
